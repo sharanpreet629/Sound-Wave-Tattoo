@@ -135,7 +135,6 @@ multitasking==0.0.10
 murmurhash==1.0.6
 mysql-connector==2.2.9
 mysql-connector-python==8.0.27
-navigator-updater==0.2.1
 nbconvert==5.6.1
 nbformat==5.0.7
 networkx
