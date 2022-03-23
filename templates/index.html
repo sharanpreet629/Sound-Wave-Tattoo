@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Webpage</title>
+        <link rel="stylesheet" href="../static/styles/styles.css">
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--        <script type="text/javascript" src="first.js"></script>-->
+        <script type="text/javascript">
+            function showHide() {
+            var audio = document.getElementById("hidden_div");
+            console.log(2-1);
+            if (audio.style.display == "none") {
+                audio.load()
+                console.log(2+4);
+                audio.style.display = '';
+            }
+            else {
+                audio.style.display = 'none';
+                }
+            }
+        </script>
+
+    </head>
+    <body>
+        <section class="header">
+            <div class="container">
+                <div>
+                    <h1>Sound Wave Tatto</h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper"> 
+            <div class="container">
+
+                <div class="section-left">
+                    <div class="sound-text">
+                        <p>Upload an audio to generate your Soundwave and get it tattooed.</p>
+                    </div>
+                    <form id="upload-file1" method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+		            <div class="sound-btn">
+                        <input type="file" class="upload-input" name="file" id="profile-img1" accept="audio/*">
+                    </div>
+		            <Button class="btn" id="btns1" name="uploadbutton"  data-action="save">Upload</Button>
+                    </form>
+                    <div class="show-image">
+                    <img id="result-image" src = "{{url_for('static', filename=paths)}}" alt="Result"  width="300px" height="300"/>
+                    </div>
+                </div>
+
+                <div class="section-right">
+                    <div class="sound-text">
+                        <p>Upload photo of your tattoo and listen hidden sound in it</p>
+                    </div>
+                    <form id="upload-file" method="POST" onsubmit="showHide(); return false;" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+		            <div class="sound-btn">
+                        <input type="file" class="upload-input" name="file" id="profile-img" accept="image/*">
+                    </div>
+                    <Button type= "submit" class="btn" id="btns" name="uploadbutton"  data-action="save">Upload</Button>
+                    </form>
+                    <div class="show-audio">
+                        <audio id="hidden_div" style="display:none;" controls="controls">
+                            <source id="wavSource"  src="{{url_for('static', filename='playback_test.wav')}}" type="audio/wav"></source>
+                        </audio>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </section>
+    </body>
+
+</html>

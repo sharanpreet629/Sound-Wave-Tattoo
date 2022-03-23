@@ -1,0 +1,64 @@
+body{
+    background-image: url("https://c0.wallpaperflare.com/preview/666/817/171/arm-tattoo-hand-tattoo-gun.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container{
+    width: 1000px;
+    /* background-color: red; */
+    margin: 0 auto;
+}
+.header h1{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+.wrapper{
+    width: 100%;
+}
+.wrapper p{
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+    line-height: 20px;
+}
+.wrapper .section-left{
+    width: 40%;
+    float: left;
+    text-align: center;
+    margin-left: 10%;
+}
+.wrapper .sound-text{
+    border: 2px solid lightgray;
+    margin-right: 100px;
+    background-color: rgba(0,0,0,.6);
+
+}
+.wrapper .sound-btn{
+    margin-top: 20px;
+    margin-left: -10%;
+}
+.wrapper .section-right{
+    width: 40%;
+    float: left;
+    text-align: center;
+    margin-left: 10%;
+}
+.wrapper Button{
+    margin-right: 20%;
+    margin-top: 5%;
+
+}
+.wrapper .show-image{
+
+    margin-top: 5%;
+    margin-right: 25%;
+
+}
+.wrapper .show-audio{
+    margin-top: 5%;
+    margin-right:20%;
+
+}
