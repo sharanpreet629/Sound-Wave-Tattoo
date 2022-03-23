@@ -27,11 +27,6 @@ scipy
 seaborn==0.10.1
 sklearn==0.0
 SQLAlchemy
-tensorboard==2.8.0
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.7.0
-tensorflow-estimator==2.7.0
 textsearch==0.0.21
 tqdm==4.63.0
 urllib3==1.25.9
