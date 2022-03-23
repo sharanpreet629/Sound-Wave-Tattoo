@@ -40,7 +40,7 @@ chardet==3.0.4
 charset-normalizer==2.0.12
 click==7.1.2
 cloudpickle
-clyent==1.2.2
+clyent==1.2.1
 colorama==0.4.3
 colorcet==3.0.0
 conda==4.8.3
