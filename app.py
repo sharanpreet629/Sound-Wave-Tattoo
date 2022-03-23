@@ -152,7 +152,7 @@ def allowed_file(filename):
 
 @main.route('/', methods=['GET'])
 def Home():
-    return render_template('index.html')
+    return "Hello World"
 
 @main.route('/uploader', methods=['GET', 'POST'])
 def upload_file():
