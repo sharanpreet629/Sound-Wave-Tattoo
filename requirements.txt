@@ -45,8 +45,7 @@ colorama==0.4.3
 colorcet==3.0.0
 conda==4.3.16
 conda-build
-conda-package-handling==1.7.0
-conda-verify==3.4.2
+conda-verify
 contextlib2==0.6.0.post1
 contractions==0.1.66
 cryptography==2.9.2
