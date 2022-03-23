@@ -3,7 +3,7 @@ aiohttp==3.8.1
 aiosignal==1.2.0
 alabaster==0.7.12
 alpha-vantage==2.3.1
-anaconda-client==1.7.2
+anaconda-client==1.2.2
 anaconda-navigator==1.9.12
 anaconda-project==0.8.3
 anyascii==0.3.0
