@@ -23,4 +23,4 @@ textsearch==0.0.21
 tqdm==4.63.0
 urllib3==1.25.9
 Werkzeug==1.0.1
-
+gunicorn
