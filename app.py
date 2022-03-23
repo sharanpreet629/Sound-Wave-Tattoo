@@ -26,7 +26,7 @@ import os
 
 
 main = Flask(__name__)
-APP_ROOT = '/home/astirmind/Downloads/FinalSoundWaveProject/FinalSoundWaveProject/uploads'
+APP_ROOT = '/uploads'
 main.config['UPLOAD_FOLDER'] = APP_ROOT
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
@@ -63,7 +63,7 @@ def plot_audio(name):
     print(name)
     namel = name.split('/')[1:]
     random_key = namel[-1]
-    path = '/home/astirmind/Downloads/FinalSoundWaveProject/FinalSoundWaveProject/static/{}.png'.format(random_key)
+    path = '/static/{}.png'.format(random_key)
     print(path)
     plt.savefig(path)
     #plt.show()
@@ -130,7 +130,7 @@ def find_distances(image):
             session.query(Audio.audio_bytes, Audio.nchannels, Audio.sampwidth, \
                           Audio.framerate, Audio.nframes, Audio.comptype, Audio.compname).filter(Audio.id \
                           == index + 1).first()
-        file_path = '/home/astirmind/Downloads/FinalSoundWaveProject/FinalSoundWaveProject/static/playback_test.wav'
+        file_path = '/static/playback_test.wav'
         tune = wave.open(file_path , 'wb')
         tune.setnchannels(nchannels)
         tune.setsampwidth(sampwidth)
@@ -214,7 +214,7 @@ def upload_file():
             resp.status_code = 400
             return resp
 
-download_directory = '/home/astirmind/Downloads/FinalSoundWaveProject/FinalSoundWaveProject/static'
+download_directory = '/static'
 @main.route("/uploader/<path:path>", methods= ['GET'])
 def get_file(path):
     return send_from_directory(download_directory,path, as_attachment=True)
