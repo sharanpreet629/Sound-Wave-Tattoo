@@ -216,7 +216,7 @@ rope==0.17.0
 rsa==4.8
 ruamel-yaml==0.15.87
 s3transfer==0.5.2
-scikit-image==0.16.2
+scikit-image
 scikit-learn
 scipy
 seaborn==0.10.1
