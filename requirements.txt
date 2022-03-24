@@ -7,7 +7,6 @@ html5lib
 keras==2.7.0
 lxml
 matplotlib
-nltk
 numpy==1.22.2
 opencv-python
 pandas==1.4.1
