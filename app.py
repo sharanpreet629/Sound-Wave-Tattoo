@@ -153,7 +153,7 @@ def allowed_file(filename):
 @main.route('/', methods=['GET'])
 def Home():
     return "Hello World"
-
+'''
 @main.route('/uploader', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -218,6 +218,6 @@ download_directory = '/static'
 @main.route("/uploader/<path:path>", methods= ['GET'])
 def get_file(path):
     return send_from_directory(download_directory,path, as_attachment=True)
-
+'''
 if __name__=='__main__':
     main.run(debug=True)
