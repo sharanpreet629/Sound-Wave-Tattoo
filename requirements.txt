@@ -8,7 +8,7 @@ keras==2.7.0
 lxml
 matplotlib
 numpy==1.22.2
-python3-opencv
+opencv-python3
 pandas==1.4.1
 path==13.1.0
 pep8==1.7.1
