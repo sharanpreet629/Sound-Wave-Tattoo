@@ -165,7 +165,7 @@ def upload_file():
             return resp
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            path = os.path.join(main.config['UPLOAD_FOLDER'], filename)
+            path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(path)
 
             query_path = path
