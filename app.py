@@ -27,7 +27,7 @@ import os
 
 app = Flask(__name__)
 APP_ROOT = '/uploads'
-app.config['UPLOAD_FOLDER'] = APP_ROOT
+#app.config['UPLOAD_FOLDER'] = APP_ROOT
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
@@ -154,70 +154,71 @@ def allowed_file(filename):
 def Home():
     return "Hello World"
 
-# @app.route('/uploader', methods=['GET', 'POST'])
-# def upload_file():
-#     if request.method == 'POST':
-#         file = request.files['']
-#         print(file)
-#         if file.filename == '':
-#             resp = jsonify({'message': 'No file selected for uploading'})
-#             resp.status_code = 400
-#             return resp
-#         if file and allowed_file(file.filename):
-#             filename = secure_filename(file.filename)
-#             path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-#             file.save(path)
+@app.route('/uploader', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['']
+        print(file)
+        if file.filename == '':
+            resp = jsonify({'message': 'No file selected for uploading'})
+            resp.status_code = 400
+            return resp
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            #path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+	    path = os.path.join(APP_ROOT, filename)
+            file.save(path)
 
-#             query_path = path
+            query_path = path
 
-#             if query_path.split('.')[-1] in audio_extensions:
-#                 print('hyy')
-#                 audio, name = read_audio(query_path)
-#                 print(name)
-#                 n, path, unique_key = plot_audio(name)
-#                 print(path)
-#                 write_text(path, unique_key)
-#                 key = text_detection(path)
-#                 #print(key)
-#                 image2db(path, key)
-#                 print(f'Saved to database audio file: {n}')
-#                 resp = jsonify({
-#                     'msg': 'success',
-#                     # 'size': [img.width, img.height],
-#                     # 'format': img.format,
-#                     'filename': filename
-#                     # 'img': data
-#                 })
-#                 resp.status_code = 201
-#                 # return resp
-#                 return resp
+            if query_path.split('.')[-1] in audio_extensions:
+                print('hyy')
+                audio, name = read_audio(query_path)
+                print(name)
+                n, path, unique_key = plot_audio(name)
+                print(path)
+                write_text(path, unique_key)
+                key = text_detection(path)
+                #print(key)
+                image2db(path, key)
+                print(f'Saved to database audio file: {n}')
+                resp = jsonify({
+                    'msg': 'success',
+                    # 'size': [img.width, img.height],
+                    # 'format': img.format,
+                    'filename': filename
+                    # 'img': data
+                })
+                resp.status_code = 201
+                # return resp
+                return resp
 
-#             elif query_path.split('.')[-1] in image_extensions:
-#                 print('hlo')
-#                 im = Image.open(query_path)
-#                 im.save('new_query.png')
-#                 #img = cv2.imread('new_check.png')
-#                 find_distances(image="new_query.png")
-#                 resp = jsonify({
-#                     'msg': 'success',
-#                     # 'size': [img.width, img.height],
-#                     # 'format': img.format,
-#                     'filename': 'playback_test.wav'
-#                     # 'img': data
-#                 })
-#                 resp.status_code = 201
-#                 # return resp
-#                 return resp
+            elif query_path.split('.')[-1] in image_extensions:
+                print('hlo')
+                im = Image.open(query_path)
+                im.save('new_query.png')
+                #img = cv2.imread('new_check.png')
+                find_distances(image="new_query.png")
+                resp = jsonify({
+                    'msg': 'success',
+                    # 'size': [img.width, img.height],
+                    # 'format': img.format,
+                    'filename': 'playback_test.wav'
+                    # 'img': data
+                })
+                resp.status_code = 201
+                # return resp
+                return resp
 
-#         else:
-#             resp = jsonify({'message': 'Allowed file types are png, jpg, jpeg, wav'})
-#             resp.status_code = 400
-#             return resp
+        else:
+            resp = jsonify({'message': 'Allowed file types are png, jpg, jpeg, wav'})
+            resp.status_code = 400
+            return resp
 
-# download_directory = '/static'
-# @app.route("/uploader/<path:path>", methods= ['GET'])
-# def get_file(path):
-#     return send_from_directory(download_directory,path, as_attachment=True)
-# 
+download_directory = '/static'
+@app.route("/uploader/<path:path>", methods= ['GET'])
+def get_file(path):
+    return send_from_directory(download_directory,path, as_attachment=True)
+
 if __name__=='__main__':
     app.run(debug=True)
