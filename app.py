@@ -25,7 +25,7 @@ import os
 
 
 
-main = Flask(__name__)
+app = Flask(__name__)
 APP_ROOT = '/uploads'
 main.config['UPLOAD_FOLDER'] = APP_ROOT
 audio_extensions = ['wav']
@@ -150,11 +150,11 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','wav'])
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@main.route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def Home():
     return "Hello World"
-'''
-@main.route('/uploader', methods=['GET', 'POST'])
+
+@app.route('/uploader', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         file = request.files['']
@@ -215,9 +215,9 @@ def upload_file():
             return resp
 
 download_directory = '/static'
-@main.route("/uploader/<path:path>", methods= ['GET'])
+@app.route("/uploader/<path:path>", methods= ['GET'])
 def get_file(path):
     return send_from_directory(download_directory,path, as_attachment=True)
 '''
 if __name__=='__main__':
-    main.run(debug=True)
+    app.run(debug=True)
