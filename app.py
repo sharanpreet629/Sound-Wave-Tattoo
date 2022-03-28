@@ -25,7 +25,7 @@ from audio import Audio
 
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="uploads")
 APP_ROOT = 'uploads'
 #app.config['UPLOAD_FOLDER'] = APP_ROOT
 audio_extensions = ['wav']
