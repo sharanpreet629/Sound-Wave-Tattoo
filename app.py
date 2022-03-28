@@ -129,9 +129,9 @@ def Home():
 @app.route('/uploader', methods=['GET', 'POST'])
 def upload_file():
 	if request.method == 'POST':
-		file = request.files['file']
+		file = request.files['']
 		print(file)
-		if file.filename == 'file':
+		if file.filename == '':
 			resp = jsonify({'message': 'No file selected for uploading'})
 			resp.status_code = 400
 			return resp
