@@ -1,15 +1,15 @@
 import numpy as np
 import os
-import wave
-import cv2
+# import wave
+# import cv2
 from werkzeug.utils import secure_filename
 import matplotlib.pyplot as plt
 from flask import Flask, request, render_template, jsonify, send_from_directory
 import wave
-from pydub import AudioSegment
+# from pydub import AudioSegment
 
-from image_match.goldberg import ImageSignature
-from pydub.playback import play
+# from image_match.goldberg import ImageSignature
+# from pydub.playback import play
 
 from PIL import Image
 from PIL import ImageDraw
