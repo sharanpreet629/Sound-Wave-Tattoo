@@ -116,35 +116,32 @@ def image2db(path, key):
 	session.add(instance) # add to database
 	session.commit()
 
-def find_distances(image):
-	im_key = text_detection(image)
-	print(im_key)
-	global all_signatures
-	all_signatures = session.query(Audio.key).all()
-	global distances
-	listy = [signature[0] for signature in all_signatures]
-	print(listy)
-	if im_key in listy:
-		index = listy.index(im_key)
-		audio_bytes, nchannels, sampwidth, framerate, nframes, comptype, compname = \
-		    session.query(Audio.audio_bytes, Audio.nchannels, Audio.sampwidth, \
-				  Audio.framerate, Audio.nframes, Audio.comptype, Audio.compname).filter(Audio.id \
-				  == index + 1).first()
-		file_path = '/static/playback_test.wav'
-		tune = wave.open(file_path , 'wb')
-		tune.setnchannels(nchannels)
-		tune.setsampwidth(sampwidth)
-		tune.setframerate(framerate)
-		tune.setnframes(nframes)
-		tune.setcomptype(comptype, compname)
-		tune.writeframes(audio_bytes)
-		tune.close()
-		AudioSegment.from_wav(file_path)
-		return print('Done')
-	else:
-		return print('Not Found')
+# def find_distances(image):
+# 	im_key = text_detection(image)
+# 	print(im_key)
+# 	global all_signatures
+# 	all_signatures = session.query(Audio.key).all()
+# 	global distances
+# 	listy = [signature[0] for signature in all_signatures]
+# 	print(listy)
+# 	if im_key in listy:
+# 		index = listy.index(im_key)
+# 		audio_bytes, nchannels, sampwidth, framerate, nframes, comptype, compname = session.query(Audio.audio_bytes, Audio.nchannels, Audio.sampwidth, Audio.framerate, Audio.nframes, Audio.comptype, Audio.compname).filter(Audio.id == index + 1).first()
+# 		file_path = '/static/playback_test.wav'
+# 		tune = wave.open(file_path , 'wb')
+# 		tune.setnchannels(nchannels)
+# 		tune.setsampwidth(sampwidth)
+# 		tune.setframerate(framerate)
+# 		tune.setnframes(nframes)
+# 		tune.setcomptype(comptype, compname)
+# 		tune.writeframes(audio_bytes)
+# 		tune.close()
+# 		AudioSegment.from_wav(file_path)
+# 		return print('Done')
+# 	else:
+# 		return print('Not Found')
 
-	return file_path
+# 	return file_path
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','wav'])
 def allowed_file(filename):
