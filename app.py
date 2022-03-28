@@ -161,7 +161,6 @@ def upload_file():
 				    # 'img': data
 				})
 				resp.status_code = 201
-				# return resp
 				return resp
 
 			elif query_path.split('.')[-1] in image_extensions:
@@ -176,7 +175,6 @@ def upload_file():
 				    # 'img': data
 				})
 				resp.status_code = 201
-				# return resp
 				return resp
 
 	else:
