@@ -142,9 +142,7 @@ def upload_file():
 			query_path = path
 
 			if query_path.split('.')[-1] in audio_extensions:
-				print('hyy')
 				audio, name = read_audio(query_path)
-				print(name)
 				n, path, unique_key = plot_audio(name)
 				print(path)
 				write_text(path, unique_key)
@@ -182,8 +180,8 @@ def upload_file():
 		resp.status_code = 400
 		return resp
 
-download_directory = '/static'
-@app.route("/uploader/<path:path>", methods= ['GET'])
+download_directory = os.path.join(os.getcwd(), '/static')
+@app.route("/uploader/<path:path>", methods= ['GET', 'POST'])
 def get_file(path):
 	return send_from_directory(download_directory,path, as_attachment=True)
 
