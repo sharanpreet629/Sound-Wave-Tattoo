@@ -165,7 +165,6 @@ def upload_file():
             return resp
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            #path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 	    path = os.path.join(APP_ROOT, filename)
             file.save(path)
 
@@ -198,8 +197,6 @@ def upload_file():
                 print('hlo')
                 im = Image.open(query_path)
                 im.save('new_query.png')
-                #img = cv2.imread('new_check.png')
-#                 find_distances(image="new_query.png")
                 resp = jsonify({
                     'msg': 'success',
                     # 'size': [img.width, img.height],
