@@ -137,7 +137,7 @@ def upload_file():
 			return resp
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			path = os.path.join(os.getcwd(), APP_ROOT, filename)
+			path = os.path.join(APP_ROOT, filename)
 			file.save(path)
 			query_path = path
 
