@@ -125,24 +125,24 @@ def find_distances(image):
 	listy = [signature[0] for signature in all_signatures]
 	print(listy)
 	if im_key in listy:
-	index = listy.index(im_key)
-	audio_bytes, nchannels, sampwidth, framerate, nframes, comptype, compname = \
-	    session.query(Audio.audio_bytes, Audio.nchannels, Audio.sampwidth, \
-			  Audio.framerate, Audio.nframes, Audio.comptype, Audio.compname).filter(Audio.id \
-			  == index + 1).first()
-	file_path = '/static/playback_test.wav'
-	tune = wave.open(file_path , 'wb')
-	tune.setnchannels(nchannels)
-	tune.setsampwidth(sampwidth)
-	tune.setframerate(framerate)
-	tune.setnframes(nframes)
-	tune.setcomptype(comptype, compname)
-	tune.writeframes(audio_bytes)
-	tune.close()
-	AudioSegment.from_wav(file_path)
-	return print('Done')
+		index = listy.index(im_key)
+		audio_bytes, nchannels, sampwidth, framerate, nframes, comptype, compname = \
+		    session.query(Audio.audio_bytes, Audio.nchannels, Audio.sampwidth, \
+				  Audio.framerate, Audio.nframes, Audio.comptype, Audio.compname).filter(Audio.id \
+				  == index + 1).first()
+		file_path = '/static/playback_test.wav'
+		tune = wave.open(file_path , 'wb')
+		tune.setnchannels(nchannels)
+		tune.setsampwidth(sampwidth)
+		tune.setframerate(framerate)
+		tune.setnframes(nframes)
+		tune.setcomptype(comptype, compname)
+		tune.writeframes(audio_bytes)
+		tune.close()
+		AudioSegment.from_wav(file_path)
+		return print('Done')
 	else:
-	return print('Not Found')
+		return print('Not Found')
 
 	return file_path
 
