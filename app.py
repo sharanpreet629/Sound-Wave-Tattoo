@@ -80,7 +80,7 @@ def write_text(path, unique_key):
 def text_detection(path):
 	documentName = path
 	with open(documentName, 'rb') as document:
-	imageBytes = bytearray(document.read())
+		imageBytes = bytearray(document.read())
 
 	client = boto3.client('textract',
 			  region_name='us-east-1',
