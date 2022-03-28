@@ -91,9 +91,9 @@ def text_detection(path):
 	blocks = response['Blocks']
 	all_lines = [l for l in blocks if l['BlockType'] == 'LINE']
 	for l in all_lines:
-	global Key
-	Key = l['Text']
-	print(Key)
+		global Key
+		Key = l['Text']
+		print(Key)
 	return Key
 
 def image2db(path, key):
