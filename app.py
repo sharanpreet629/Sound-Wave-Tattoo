@@ -188,4 +188,4 @@ def get_file(path):
 	return send_from_directory(download_directory,path, as_attachment=True)
 
 if __name__=='__main__':
-	app.run(debug=True)
+	app.run_server(debug=True)
