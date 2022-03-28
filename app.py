@@ -26,10 +26,10 @@ import os
 
 
 app = Flask(__name__)
-APP_ROOT = '/uploads'
-#app.config['UPLOAD_FOLDER'] = APP_ROOT
-audio_extensions = ['wav']
-image_extensions = ['jpeg','png','jpg']
+# APP_ROOT = '/uploads'
+# #app.config['UPLOAD_FOLDER'] = APP_ROOT
+# audio_extensions = ['wav']
+# image_extensions = ['jpeg','png','jpg']
 
 
 ACCESS_KEY = 'AKIASLURFW5R7GJPTSNM'
