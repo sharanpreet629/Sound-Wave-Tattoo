@@ -151,7 +151,7 @@ def upload_file():
 # 				image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
 # 				query_path = path
 				return profile_entry
-			except IntegrityError as e:
+			except Exception as e:
 				resp = 'Something went wrong please try again later'
 				return resp
 # 			#path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
