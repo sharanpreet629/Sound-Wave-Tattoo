@@ -143,7 +143,7 @@ def upload_file():
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			try:
-				query_path =(os.path.join(application.config['UPLOAD_FOLDER'],filename))
+				query_path =(os.path.join(app.config['UPLOAD_FOLDER'],filename))
 				file.save(query_path)
 				return query_path
 		
