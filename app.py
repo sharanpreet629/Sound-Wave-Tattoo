@@ -144,17 +144,16 @@ def upload_file():
 			return resp
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			return filename
-# 			try:
-# 				profile_entry = Profile(img_name=filename)
-# 				db.session.add(profile_entry)
-# 				db.session.commit()
-# 				image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
-# 				flash('File upload Successfully !', "success")
-# 				query_path = path
-# 			except IntegrityError as e:
-# 				flash('Something went wrong please try again later', "danger")
-# 				return redirect(request.url)
+			try:
+				profile_entry = Profile(img_name=filename)
+				db.session.add(profile_entry)
+				db.session.commit()
+				image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+				query_path = path
+				return query_path
+			except IntegrityError as e:
+				resp = 'Something went wrong please try again later'
+				return resp
 # 			#path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 			#file.save(path)
 			
