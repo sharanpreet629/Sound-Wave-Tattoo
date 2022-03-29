@@ -149,7 +149,7 @@ def upload_file():
 # 				db.session.commit()
 				query_path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 				file.save(query_path)
-				return query_path
+				return os.path.realpath(__file__)
 		
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
