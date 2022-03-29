@@ -66,7 +66,7 @@ def plot_audio(name):
 	print(name)
 	namel = name.split('/')[1:]
 	random_key = namel[-1]
-	path = '/app/static/{}.png'.format(random_key)
+	path = '/static/{}.png'.format(random_key)
 	print(path)
 	plt.savefig(path)
 	#plt.show()
