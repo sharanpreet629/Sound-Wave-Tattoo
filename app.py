@@ -21,6 +21,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 from db.db import db
 from audio import Audio
+from models.app_model import Profile
 
 # import boto3
 # import glob
@@ -30,6 +31,7 @@ from audio import Audio
 
 app = Flask(__name__)
 # APP_ROOT = 'uploads'
+app.config.from_object('settings.Config')
 app.config["IMAGE_UPLOADS"] = "./static"
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
@@ -38,16 +40,12 @@ image_extensions = ['jpeg','png','jpg']
 ACCESS_KEY = 'AKIASLURFW5R7GJPTSNM'
 SECRET_KEY = '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'
 
-class Profile(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    img_name = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
-
 
 engine = create_engine('sqlite:///Audio.db')
 Session = sessionmaker(bind = engine)
 session = Session()
 
+db.init_app(app)
 
 #user defined functions
 def read_audio(file_name):
@@ -146,9 +144,19 @@ def upload_file():
 			return resp
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
-			file.save(path)
-			query_path = path
+			try:
+				profile_entry = Profile(img_name=filename)
+				db.session.add(profile_entry)
+				db.session.commit()
+				image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+				flash('File upload Successfully !', "success")
+				query_path = path
+			except IntegrityError as e:
+				flash('Something went wrong please try again later', "danger")
+				return redirect(request.url)
+			#path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
+			#file.save(path)
+			
 
 			if query_path.split('.')[-1] in audio_extensions:
 				audio, name = read_audio(query_path)
