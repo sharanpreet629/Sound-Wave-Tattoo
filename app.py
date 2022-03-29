@@ -137,60 +137,61 @@ def Home():
 def upload_file():
 	if request.method == 'POST':
 		file = request.files['']
-		flash(file)
+		
 		if file.filename == '':
 			resp = jsonify({'message': 'No file selected for uploading'})
 			resp.status_code = 400
 			return resp
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			try:
-				profile_entry = Profile(img_name=filename)
-				db.session.add(profile_entry)
-				db.session.commit()
-				image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
-				flash('File upload Successfully !', "success")
-				query_path = path
-			except IntegrityError as e:
-				flash('Something went wrong please try again later', "danger")
-				return redirect(request.url)
-			#path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
+			return filename
+# 			try:
+# 				profile_entry = Profile(img_name=filename)
+# 				db.session.add(profile_entry)
+# 				db.session.commit()
+# 				image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+# 				flash('File upload Successfully !', "success")
+# 				query_path = path
+# 			except IntegrityError as e:
+# 				flash('Something went wrong please try again later', "danger")
+# 				return redirect(request.url)
+# 			#path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 			#file.save(path)
 			
 
-			if query_path.split('.')[-1] in audio_extensions:
-				audio, name = read_audio(query_path)
-				n, path, unique_key = plot_audio(name)
-				print(path)
-				write_text(path, unique_key)
-				#key = text_detection(path)
-				key = 'sa2'
-				#print(key)
-				image2db(path, key)
-				print(f'Saved to database audio file: {n}')
-				resp = jsonify({
-				    'msg': 'success',
-				    # 'size': [img.width, img.height],
-				    # 'format': img.format,
-				    'filename': filename
-				    # 'img': data
-				})
-				resp.status_code = 201
-				return resp
+# 			if query_path.split('.')[-1] in audio_extensions:
+# 				audio, name = read_audio(query_path)
+# 				n, path, unique_key = plot_audio(name)
+# 				print(path)
+# 				write_text(path, unique_key)
+# 				#key = text_detection(path)
+# 				key = 'sa2'
+# 				#print(key)
+# 				image2db(path, key)
+# 				print(f'Saved to database audio file: {n}')
+# 				resp = jsonify({
+# 				    'msg': 'success',
+# 				    # 'size': [img.width, img.height],
+# 				    # 'format': img.format,
+# 				    'filename': filename
+# 				    # 'img': data
+# 				})
+# 				resp.status_code = 201
+# 				return resp
 
-			elif query_path.split('.')[-1] in image_extensions:
-				print('hlo')
-				im = Image.open(query_path)
-				im.save('new_query.png')
-				resp = jsonify({
-				    'msg': 'success',
-				    # 'size': [img.width, img.height],
-				    # 'format': img.format,
-				    'filename': 'playback_test.wav'
-				    # 'img': data
-				})
-				resp.status_code = 201
-				return resp
+# 			elif query_path.split('.')[-1] in image_extensions:
+# 				print('hlo')
+# 				im = Image.open(query_path)
+# 				im.save('new_query.png')
+# 				resp = jsonify({
+# 				    'msg': 'success',
+# 				    # 'size': [img.width, img.height],
+# 				    # 'format': img.format,
+# 				    'filename': 'playback_test.wav'
+# 				    # 'img': data
+# 				})
+# 				resp.status_code = 201
+# 				return resp
 
 	else:
 		resp = jsonify({'message': 'Allowed file types are png, jpg, jpeg, wav'})
