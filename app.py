@@ -41,7 +41,6 @@ engine = create_engine('sqlite:///Audio.db')
 Session = sessionmaker(bind = engine)
 session = Session()
 
-db.init_app(app)
 
 #user defined functions
 def read_audio(file_name):
