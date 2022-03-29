@@ -146,6 +146,11 @@ def upload_file():
 				file.save(query_path)
  				return query_path
 			
+			except Exception as e:
+				resp = 'Something went wrong please try again later'
+				return resp
+
+			
 
 # 				if query_path.split('.')[-1] in audio_extensions:
 # 					audio, name = read_audio(query_path)
@@ -181,10 +186,7 @@ def upload_file():
 # 					resp.status_code = 201
 # 					return resp
 				
-  			except Exception as e:
-				resp = 'Something went wrong please try again later'
-				return resp
-
+  			
 	else:
 		resp = jsonify({'message': 'Allowed file types are png, jpg, jpeg, wav'})
 		resp.status_code = 400
