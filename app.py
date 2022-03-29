@@ -27,12 +27,11 @@ from models.app_model import Profile
 # import glob
 
 
+UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) 
 
-
-app = Flask(__name__)
-# APP_ROOT = 'uploads'
-app.config.from_object('settings.Config')
-app.config["IMAGE_UPLOADS"] = "./static/uploads"
+app = Flask(__name__, static_url_path="/static")
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
@@ -144,10 +143,7 @@ def upload_file():
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			try:
-# 				profile_entry = Profile(img_name=filename)
-# 				db.session.add(profile_entry)
-# 				db.session.commit()
-				query_path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
+				query_path =(os.path.join(application.config['UPLOAD_FOLDER'],filename))
 				file.save(query_path)
 				return query_path
 		
