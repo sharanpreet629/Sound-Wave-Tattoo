@@ -148,9 +148,9 @@ def upload_file():
 				profile_entry = Profile(img_name=filename)
 				db.session.add(profile_entry)
 				db.session.commit()
-				image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
-				query_path = path
-				return query_path
+# 				image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+# 				query_path = path
+				return profile_entry
 			except IntegrityError as e:
 				resp = 'Something went wrong please try again later'
 				return resp
