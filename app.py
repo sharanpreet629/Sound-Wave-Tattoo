@@ -32,7 +32,7 @@ from models.app_model import Profile
 app = Flask(__name__)
 # APP_ROOT = 'uploads'
 app.config.from_object('settings.Config')
-app.config["IMAGE_UPLOADS"] = "/static/uploads"
+app.config["IMAGE_UPLOADS"] = "./static/uploads"
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
