@@ -32,7 +32,7 @@ from models.app_model import Profile
 app = Flask(__name__)
 # APP_ROOT = 'uploads'
 app.config.from_object('settings.Config')
-app.config["IMAGE_UPLOADS"] = "./static"
+app.config["IMAGE_UPLOADS"] = "./static/uploads"
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
@@ -145,18 +145,17 @@ def upload_file():
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			try:
-# 				profile_entry = Profile(img_name=filename)
-# 				db.session.add(profile_entry)
-# 				db.session.commit()
+				profile_entry = Profile(img_name=filename)
+				db.session.add(profile_entry)
+				db.session.commit()
 				path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 				file.save(path)
 				query_path = path
 				return path
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
-				return e
-# 			#path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
-			#file.save(path)
+				return resp
+ 			
 			
 
 # 			if query_path.split('.')[-1] in audio_extensions:
