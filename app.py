@@ -137,7 +137,6 @@ def Home():
 def upload_file():
 	if request.method == 'POST':
 		file = request.files['']
-		
 		if file.filename == '':
 			resp = jsonify({'message': 'No file selected for uploading'})
 			resp.status_code = 400
@@ -145,13 +144,13 @@ def upload_file():
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			try:
-				profile_entry = Profile(img_name=filename)
-				db.session.add(profile_entry)
-				db.session.commit()
+# 				profile_entry = Profile(img_name=filename)
+# 				db.session.add(profile_entry)
+# 				db.session.commit()
 				path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 				file.save(path)
 				query_path = path
-				return path
+				return file
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
 				return resp
