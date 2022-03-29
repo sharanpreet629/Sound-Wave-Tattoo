@@ -39,5 +39,5 @@ urllib3==1.26.9
 Wave==0.0.2
 Werkzeug==2.0.3
 gunicorn
-
+flask_sqlalchemy
 
