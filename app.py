@@ -147,9 +147,9 @@ def upload_file():
 # 				profile_entry = Profile(img_name=filename)
 # 				db.session.add(profile_entry)
 # 				db.session.commit()
-				query_path = os.path.join(os.path.realpath(__file__), app.config["IMAGE_UPLOADS"], filename)
+				query_path = os.path.join( app.config["IMAGE_UPLOADS"], filename)
 				file.save(query_path)
-				return query_path
+				return os.path.realpath(__file__)
 		
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
