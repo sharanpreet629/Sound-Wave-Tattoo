@@ -153,39 +153,39 @@ def upload_file():
  			
 			
 
-# 			if query_path.split('.')[-1] in audio_extensions:
-# 				audio, name = read_audio(query_path)
-# 				n, path, unique_key = plot_audio(name)
-# 				print(path)
-# 				write_text(path, unique_key)
-# 				#key = text_detection(path)
-# 				key = 'sa2'
-# 				#print(key)
-# 				image2db(path, key)
-# 				print(f'Saved to database audio file: {n}')
-# 				resp = jsonify({
-# 				    'msg': 'success',
-# 				    # 'size': [img.width, img.height],
-# 				    # 'format': img.format,
-# 				    'filename': filename
-# 				    # 'img': data
-# 				})
-# 				resp.status_code = 201
-# 				return resp
+			if query_path.split('.')[-1] in audio_extensions:
+				audio, name = read_audio(query_path)
+				n, path, unique_key = plot_audio(name)
+				print(path)
+				write_text(path, unique_key)
+				#key = text_detection(path)
+				key = 'sa2'
+				#print(key)
+				image2db(path, key)
+				print(f'Saved to database audio file: {n}')
+				resp = jsonify({
+				    'msg': 'success',
+				    # 'size': [img.width, img.height],
+				    # 'format': img.format,
+				    'filename': filename
+				    # 'img': data
+				})
+				resp.status_code = 201
+				return resp
 
-# 			elif query_path.split('.')[-1] in image_extensions:
-# 				print('hlo')
-# 				im = Image.open(query_path)
-# 				im.save('new_query.png')
-# 				resp = jsonify({
-# 				    'msg': 'success',
-# 				    # 'size': [img.width, img.height],
-# 				    # 'format': img.format,
-# 				    'filename': 'playback_test.wav'
-# 				    # 'img': data
-# 				})
-# 				resp.status_code = 201
-# 				return resp
+			elif query_path.split('.')[-1] in image_extensions:
+				print('hlo')
+				im = Image.open(query_path)
+				im.save('new_query.png')
+				resp = jsonify({
+				    'msg': 'success',
+				    # 'size': [img.width, img.height],
+				    # 'format': img.format,
+				    'filename': 'playback_test.wav'
+				    # 'img': data
+				})
+				resp.status_code = 201
+				return resp
 
 	else:
 		resp = jsonify({'message': 'Allowed file types are png, jpg, jpeg, wav'})
