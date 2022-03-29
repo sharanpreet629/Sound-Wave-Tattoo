@@ -154,7 +154,7 @@ def upload_file():
 				return path
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
-				return resp
+				return e
 # 			#path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 			#file.save(path)
 			
