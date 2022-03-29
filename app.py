@@ -27,10 +27,10 @@ from models.app_model import Profile
 # import glob
 
 
-UPLOAD_FOLDER = './static/uploads' 
+
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = './static'
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
@@ -144,13 +144,11 @@ def upload_file():
 			try:
 				query_path =(os.path.join(app.config['UPLOAD_FOLDER'],filename))
 				file.save(query_path)
- 				return query_path
-			
+				return query_path
+
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
 				return resp
-
-			
 
 # 				if query_path.split('.')[-1] in audio_extensions:
 # 					audio, name = read_audio(query_path)
