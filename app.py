@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import matplotlib.pyplot as plt
 from flask import Flask, request, render_template, jsonify, send_from_directory, redirect, flash
 import wave
+import datetime
 # from pydub import AudioSegment
 
 # from image_match.goldberg import ImageSignature
@@ -18,6 +19,7 @@ from PIL import ImageFont
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
+from db.db import db
 from audio import Audio
 
 # import boto3
@@ -35,6 +37,12 @@ image_extensions = ['jpeg','png','jpg']
 
 ACCESS_KEY = 'AKIASLURFW5R7GJPTSNM'
 SECRET_KEY = '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'
+
+class Profile(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    img_name = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
+
 
 engine = create_engine('sqlite:///Audio.db')
 Session = sessionmaker(bind = engine)
