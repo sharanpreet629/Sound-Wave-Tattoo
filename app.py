@@ -32,7 +32,7 @@ from models.app_model import Profile
 app = Flask(__name__)
 # APP_ROOT = 'uploads'
 app.config.from_object('settings.Config')
-app.config["IMAGE_UPLOADS"] = "/static/uploads"
+app.config["IMAGE_UPLOADS"] = "./static/uploads"
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
@@ -147,7 +147,7 @@ def upload_file():
 # 				profile_entry = Profile(img_name=filename)
 # 				db.session.add(profile_entry)
 # 				db.session.commit()
-				query_path = os.path.join(os.getcwd(), app.config["IMAGE_UPLOADS"], filename)
+				query_path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 				file.save(query_path)
 				return query_path
 		
