@@ -18,10 +18,8 @@ from PIL import ImageFont
 
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from sqlalchemy.exc import IntegrityError
-from db.db import db
 from audio import Audio
-from models.app_model import Profile
+
 
 # import boto3
 # import glob
