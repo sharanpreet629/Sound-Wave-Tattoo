@@ -25,9 +25,9 @@ from audio import Audio
 
 
 
-app = Flask(__name__, static_folder="uploads")
-APP_ROOT = 'uploads'
-#app.config['UPLOAD_FOLDER'] = APP_ROOT
+app = Flask(__name__)
+# APP_ROOT = 'uploads'
+app.config["IMAGE_UPLOADS"] = "./uploads"
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
@@ -137,7 +137,7 @@ def upload_file():
 			return resp
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			path = os.path.join(APP_ROOT, filename)
+			path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 			file.save(path)
 			query_path = path
 
