@@ -32,7 +32,8 @@ from models.app_model import Profile
 app = Flask(__name__)
 # APP_ROOT = 'uploads'
 app.config.from_object('settings.Config')
-app.config["IMAGE_UPLOADS"] = "/app/static/uploads"
+#app.config["IMAGE_UPLOADS"] = "/app/static/uploads"
+app.config["IMAGE_UPLOADS"] = "https://github.com/sharanpreet629/Sound-Wave-Tattoo/tree/main/static/uploads"
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
