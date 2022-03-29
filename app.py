@@ -30,7 +30,6 @@ from models.app_model import Profile
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) 
 
 app = Flask(__name__, static_url_path="/static")
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
