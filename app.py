@@ -149,7 +149,7 @@ def upload_file():
 # 				db.session.add(profile_entry)
 # 				db.session.commit()
 				path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
-				image.save(path)
+				file.save(path)
 				query_path = path
 				return path
 			except Exception as e:
