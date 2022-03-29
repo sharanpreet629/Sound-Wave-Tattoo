@@ -27,9 +27,9 @@ from models.app_model import Profile
 # import glob
 
 
-UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) 
+UPLOAD_FOLDER = './static/uploads' 
 
-app = Flask(__name__, static_url_path="/static")
+app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
