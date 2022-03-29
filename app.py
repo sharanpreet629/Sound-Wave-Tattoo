@@ -27,12 +27,12 @@ from models.app_model import Profile
 # import glob
 
 
-
+/app/app.py
 
 app = Flask(__name__)
 # APP_ROOT = 'uploads'
 app.config.from_object('settings.Config')
-app.config["IMAGE_UPLOADS"] = "./static/uploads"
+app.config["IMAGE_UPLOADS"] = "/app/static/uploads"
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
@@ -149,7 +149,7 @@ def upload_file():
 # 				db.session.commit()
 				query_path = os.path.join(app.config["IMAGE_UPLOADS"], filename)
 				file.save(query_path)
-				return os.path.realpath(__file__)
+				return query_path
 		
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
