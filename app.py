@@ -137,7 +137,7 @@ def Home():
 def upload_file():
 	if request.method == 'POST':
 		file = request.files['']
-		print(file)
+		flash(file)
 		if file.filename == '':
 			resp = jsonify({'message': 'No file selected for uploading'})
 			resp.status_code = 400
