@@ -27,7 +27,7 @@ from audio import Audio
 
 app = Flask(__name__)
 # APP_ROOT = 'uploads'
-app.config["IMAGE_UPLOADS"] = "./static/uploads"
+app.config["IMAGE_UPLOADS"] = "./static"
 audio_extensions = ['wav']
 image_extensions = ['jpeg','png','jpg']
 
