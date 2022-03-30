@@ -153,7 +153,7 @@ def upload_file():
 # 					print(path)
 # 					write_text(path, unique_key)
 # 					#key = text_detection(path)
-# 					key = 'sa2'
+# 					key = 'sx379'
 # 					#print(key)
 # 					image2db(path, key)
 # 					print(f'Saved to database audio file: {n}')
