@@ -141,7 +141,7 @@ def upload_file():
 			try:
 				query_path =(os.path.join(app.config['UPLOAD_FOLDER'],filename))
 				file.save(query_path)
-				return query_path
+				#return query_path
 
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
