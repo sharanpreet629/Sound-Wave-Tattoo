@@ -141,45 +141,45 @@ def upload_file():
 			try:
 				query_path =(os.path.join(app.config['UPLOAD_FOLDER'],filename))
 				file.save(query_path)
-				#return query_path
+				return query_path
 
 			except Exception as e:
 				resp = 'Something went wrong please try again later'
 				return resp
 
-				if query_path.split('.')[-1] in audio_extensions:
-					audio, name = read_audio(query_path)
-					n, path, unique_key = plot_audio(name)
-					print(path)
-					write_text(path, unique_key)
-					#key = text_detection(path)
-					key = 'sx379'
-					#print(key)
-					image2db(path, key)
-					print(f'Saved to database audio file: {n}')
-					resp = jsonify({
-					    'msg': 'success',
-					    # 'size': [img.width, img.height],
-					    # 'format': img.format,
-					    'filename': filename
-					    # 'img': data
-					})
-					resp.status_code = 201
-					return resp
+# 				if query_path.split('.')[-1] in audio_extensions:
+# 					audio, name = read_audio(query_path)
+# 					n, path, unique_key = plot_audio(name)
+# 					print(path)
+# 					write_text(path, unique_key)
+# 					#key = text_detection(path)
+# 					key = 'sx379'
+# 					#print(key)
+# 					image2db(path, key)
+# 					print(f'Saved to database audio file: {n}')
+# 					resp = jsonify({
+# 					    'msg': 'success',
+# 					    # 'size': [img.width, img.height],
+# 					    # 'format': img.format,
+# 					    'filename': filename
+# 					    # 'img': data
+# 					})
+# 					resp.status_code = 201
+# 					return resp
 
-				elif query_path.split('.')[-1] in image_extensions:
-					print('hlo')
-					im = Image.open(query_path)
-					im.save('new_query.png')
-					resp = jsonify({
-					    'msg': 'success',
-					    # 'size': [img.width, img.height],
-					    # 'format': img.format,
-					    'filename': 'playback_test.wav'
-					    # 'img': data
-					})
-					resp.status_code = 201
-					return resp
+# 				elif query_path.split('.')[-1] in image_extensions:
+# 					print('hlo')
+# 					im = Image.open(query_path)
+# 					im.save('new_query.png')
+# 					resp = jsonify({
+# 					    'msg': 'success',
+# 					    # 'size': [img.width, img.height],
+# 					    # 'format': img.format,
+# 					    'filename': 'playback_test.wav'
+# 					    # 'img': data
+# 					})
+# 					resp.status_code = 201
+# 					return resp
 				
   			
 	else:
